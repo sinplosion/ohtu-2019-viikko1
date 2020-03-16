@@ -6,7 +6,6 @@
  * user guide available at https://guides.gradle.org/creating-new-gradle-builds/
  */
 
-
 plugins {
     id 'checkstyle'
 }
@@ -17,8 +16,6 @@ apply plugin: 'java'
 // Apply the application plugin to add support for building an application
 apply plugin: 'application'
 
-//Jacoco
-apply plugin: "jacoco" 
 
 // In this section you declare where to find the dependencies of your project
 repositories {
@@ -38,14 +35,14 @@ dependencies {
 // Define the main class for the application
 mainClassName = 'ohtu.ohtuvarasto.Main'
 
-// creating a jar file
 jar {
     manifest {
         attributes 'Main-Class': 'main.Main'
     }
 }
 
-//jacoco
+apply plugin: "jacoco" 
+
 
 jacocoTestReport {
     reports {
