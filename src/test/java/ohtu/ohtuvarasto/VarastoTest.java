@@ -65,4 +65,65 @@ public class VarastoTest {
         assertEquals(4, varasto.paljonkoMahtuu(), vertailuTarkkuus);
     }
 
+    @Test
+    public void varastostaNegatiivinenArvo() {
+        assertTrue(varasto.otaVarastosta(-1) == 0);
+    }
+
+    @Test
+    public void varastostaVainMaksimissaanSaldo() {
+        varasto.lisaaVarastoon(1);
+        assertTrue(1 == varasto.otaVarastosta(2));
+    }
+    @Test
+    public void merkkijonoesitysOikein() {
+        assertEquals(varasto.toString(), "saldo = 0.0, vielä tilaa 10.0");
+    }
+
+    @Test
+    public void negatiivinenArvoLisaaVarastoon() {
+        varasto.lisaaVarastoon(-1);
+        assertTrue(varasto.getSaldo() == 0);
+    }
+
+
+    @Test
+    public void yliTilavuudenArvoLisaaVarastoon() {
+        varasto.lisaaVarastoon(varasto.getTilavuus() * 2);
+        assertTrue(varasto.getSaldo() == varasto.getTilavuus());
+    }
+
+    @Test
+    public void konstruktoriNegatiivisellaTilavuudella() {
+        varasto = new Varasto(-1);
+        assertTrue(varasto.getTilavuus() == 0);
+    }
+
+    @Test
+    public void konstruktoriNegatiivisellaTilavuudellaPositiivisellaSaldolla() {
+        varasto = new Varasto(-1, 1);
+        assertTrue(varasto.getTilavuus() == 0);
+
+        
+    }
+
+    @Test
+    public void konstruktoriPosTilavuudellaNegSaldolla(){
+        varasto = new Varasto(1, -1);
+        assertTrue(varasto.getSaldo() == 0);
+    }
+
+    @Test
+    public void konstruktoriSaldoJaTilavuusSamat(){
+        varasto = new Varasto(2,2);
+        assertTrue(varasto.getSaldo() == 2);
+    }
+
+
+
+
+
+
+
+
 }
