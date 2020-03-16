@@ -116,7 +116,7 @@ public class VarastoTest {
     @Test
     public void konstruktoriSaldoJaTilavuusSamat(){
         varasto = new Varasto(2,2);
-        assertTrue(varasto.getSaldo() == 3);
+        assertTrue(varasto.getSaldo() == 2);
     }
 
 
